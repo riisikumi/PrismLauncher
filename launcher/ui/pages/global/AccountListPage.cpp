@@ -188,22 +188,15 @@ void AccountListPage::on_actionAddMicrosoft_triggered()
 
 void AccountListPage::on_actionAddOffline_triggered()
 {
-    if (!m_accounts->anyAccountIsValid()) {
-        QMessageBox::warning(
-            this,
-            tr("Error"),
-            tr(
-                "You must add a Microsoft or Mojang account that owns Minecraft before you can add an offline account."
-                "<br><br>"
-                "If you have lost your account you can contact Microsoft for support."
-            )
-        );
-        return;
-    }
-
     MinecraftAccountPtr account = OfflineLoginDialog::newAccount(
         this,
-        tr("Please enter your desired username to add your offline account.")
+        tr("Please enter your desired username to add your offline account. <br>"
+           "<br>"
+           "It is required by Mojang that you own Minecraft BEFORE you may use offline mode. <br>"
+           "The PrismLauncher developers denounce piracy and take NO LIABILITY WHATSOEVER for <br>"
+           "any illegal activity that may occur in usage of the offline mode feature. <br>"
+           "<br>"
+           "By continuing you promise that you own a Minecraft account.")
     );
 
     if (account)
